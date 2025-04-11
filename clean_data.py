@@ -16,6 +16,12 @@ def clean_data(df):
 
     return counts
 
+def normalize_cpm(df):
+    df_cleaned = clean_data(df)
+    df_normalized= (df_cleaned / df_cleaned.sum()) * 1000000
+    return df_normalized
+
+
 def main():
     data = clean_data('/Users/sangeethavempati/Downloads/CCLE_RNAseq_reads.csv')
     print(data.head())
