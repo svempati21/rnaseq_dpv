@@ -14,11 +14,13 @@ def clean_data(df):
     # Transpose counts
     counts = counts.T
 
+    counts.index = counts.index.str.extract(r'\((.*?)\)')
+
     return counts
 
 def normalize_cpm(df):
     df_cleaned = clean_data(df)
-    df_normalized= (df_cleaned / df_cleaned.sum()) * 1000000
+    df_normalized = (df_cleaned / df_cleaned.sum()) * 1000000
     return df_normalized
 
 
