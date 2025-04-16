@@ -32,6 +32,13 @@ def boxplots(df):
     plt.title('Boxplots for Samples')
     plt.show()
 
+def sample_correlation(df):
+    correlation = df.corr()
+    plt.figure()
+    sns.heatmap(correlation)
+    plt.title('Correlation Matrix')
+    plt.show()
+
 
 def main():
     data = clean_data.normalize_cpm('/Users/sangeethavempati/Downloads/CCLE_RNAseq_reads.csv')
@@ -40,7 +47,7 @@ def main():
     print(log_transform_df.shape)
     print(log_transform_df.head())
     #boxplots(log_transform_df)
-    pca(log_transform_df)
+    sample_correlation(log_transform_df)
 
 
 
