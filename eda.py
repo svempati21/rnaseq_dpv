@@ -46,7 +46,8 @@ def main():
     log_transform_df = filter_transform_data.log_transform(data)
     print(log_transform_df.shape)
     print(log_transform_df.head())
-    #boxplots(log_transform_df)
+    boxplots(log_transform_df)
+    pca(log_transform_df)
     sample_correlation(log_transform_df)
 
 
