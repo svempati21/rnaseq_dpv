@@ -10,7 +10,7 @@ import seaborn as sns
 
 
 def pca(df):
-    scale = StandardScaler().fit_transform(df)
+    scale = StandardScaler().fit_transform(df.T)
 
     pca = PCA(n_components=2)
 
@@ -41,14 +41,14 @@ def sample_correlation(df):
 
 
 def main():
-    data = clean_data.normalize_cpm('/Users/sangeethavempati/Downloads/CCLE_RNAseq_reads.csv')
+    data = clean_data.normalize_cpm('CCLE_RNAseq_reads.csv')
     print(data.shape)
     log_transform_df = filter_transform_data.log_transform(data)
     print(log_transform_df.shape)
     print(log_transform_df.head())
-    boxplots(log_transform_df)
+    #boxplots(log_transform_df)
     pca(log_transform_df)
-    sample_correlation(log_transform_df)
+    #sample_correlation(log_transform_df)
 
 
 
