@@ -3,6 +3,7 @@ import numpy as np
 
 import clean_data
 import filter_transform_data
+import merge_metadata
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
@@ -46,9 +47,12 @@ def main():
     log_transform_df = filter_transform_data.log_transform(data)
     print(log_transform_df.shape)
     print(log_transform_df.head())
-    #boxplots(log_transform_df)
+    metadata = 'sample_info.csv'
+    #merged = merge_metadata.merge_metadata_pca(metadata, log_transform_df)
+    #merged = merge_metadata.merge_metadata_long(metadata, log_transform_df)
+    #boxplots(merged)
     pca(log_transform_df)
-    #sample_correlation(log_transform_df)
+    #sample_correlation(merged)
 
 
 
