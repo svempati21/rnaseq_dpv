@@ -9,7 +9,7 @@ def basic_clean_data(df):
     # Read in dataframe and set first column as index
     counts = pd.read_csv(df, index_col=[0])
     # Remove instances of all zero counts
-    counts = counts[counts.sum(axis=1)>0]
+    counts = counts[counts.sum(axis=1) > 0]
     # Drop NA rows
     counts = counts.dropna()
     # Convert all counts to integers

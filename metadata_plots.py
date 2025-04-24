@@ -32,7 +32,7 @@ def pca_metadata(df, metadata, metadata_column):
 
     plt.figure(figsize=(14, 10))
     plot = sns.scatterplot(merged, x='PC1', y='PC2', hue=metadata_column)
-    # sns docs
+
     sns.move_legend(plot, "upper left", bbox_to_anchor=(1, 1))
     plt.title('PCA for Normalized Read Counts')
 
@@ -44,7 +44,7 @@ def pca_metadata(df, metadata, metadata_column):
 
 def boxplots_metadata(df, metadata_column):
     '''
-    This function creates a boxplots scatter plot for the specified
+    This function creates a boxplot for the specified
     metadata column.
     Parameters: merged dataframe, a string value for the metadata column name.
     Returns: nothing but creates and saves a boxplot scatter plot.
@@ -55,24 +55,6 @@ def boxplots_metadata(df, metadata_column):
     plt.title('Boxplots for Samples')
     plt.savefig(f'Box-{metadata_column}.png')
     plt.show()
-
-'''
-def sample_correlation_metadata(df, metadata, metadata_column):
-    df.set_index(df.columns[0], inplace=True)
-    print(df.head())
-    correlation = df.corr()
-
-    df, metadata = merge_metadata.read_metadata(df, metadata)
-
-    merged = pd.concat([metadata, correlation], axis=1)
-    pd.set_option('display.max_columns', None)
-    print(merged.head)
-
-    plt.figure()
-    sns.heatmap(correlation, hue=metadata_column)
-    plt.title('Correlation Matrix')
-    plt.show()
-'''
 
 def main():
     data = 'CCLE_RNAseq_reads.csv'

@@ -37,6 +37,11 @@ def filter(df):
     return new_df
 
 def log_transform(df):
+    '''
+    Log transform read counts
+    Parameters: string value that is absolute path to CSV data file
+    Return: log transformed filtered df
+    '''
     # Obtain filtered df
     filtered_df = filter(df)
 
@@ -45,7 +50,6 @@ def log_transform(df):
     return log_transform_df
 
 def main():
-    #data = clean_data.normalize_cpm('/Users/sangeethavempati/Downloads/CCLE_RNAseq_reads.csv')
     data = 'CCLE_RNAseq_reads.csv'
     log_transform_df = log_transform(data)
     print(log_transform_df.shape)

@@ -22,6 +22,10 @@ def test_mean_counts():
     assert expected.equals(cleaned_data)
 
 def test_filter():
+    '''
+    Test filter function
+    Assert if expected value is matched
+    '''
     filtered_data = ft.filter('edited_4x4.csv')
 
     expected = pd.DataFrame([[0.0,429030.702459,30303.030303],[1000000.0,570969.297541,969696.969697]])
