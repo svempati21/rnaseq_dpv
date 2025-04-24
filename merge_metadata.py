@@ -45,7 +45,6 @@ def merge_metadata_long(data, metadata):
 
     # Transpose data
     data = data.T
-    print(data.head())
 
     # Set index of data to DepMap_ID
     data = data.reset_index(names='DepMap_ID')

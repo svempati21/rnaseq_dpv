@@ -11,17 +11,30 @@ def test_mean_counts():
 
     cleaned_data = ft.mean_counts('edited_4x4.csv')
     print(cleaned_data)
-    print(type(cleaned_data))
 
-    expected = pd.Series([(429030.702459+30303.030303)/3,0.000000,(1000000.0+570969.297541+969696.969697)/3])
+    expected = pd.Series([153111.244254,0.000000,846888.755746])
     expected.index = [('ENSG00000000003',), ('ENSG00000000005',), ('ENSG00000000419',)]
     print(expected)
-    print()
+    print(type(expected))
+
+    print(expected.compare(cleaned_data))
 
     assert expected.equals(cleaned_data)
 
+def test_filter():
+    filtered_data = ft.filter('edited_4x4.csv')
+
+    expected = pd.DataFrame([[0.0,429030.702459,30303.030303],[1000000.0,570969.297541,969696.969697]])
+    expected.index = [('ENSG00000000003',), ('ENSG00000000419',)]
+    expected.columns = ['ACH-001097', 'ACH-001804', 'ACH-000534']
+    print(expected.compare(filtered_data))
+
+    assert expected.equals(filtered_data)
+
+
 
 def main():
-    data = test_mean_counts()
+    #data = test_mean_counts()
+    data = test_filter()
 if __name__ == '__main__':
     main()
